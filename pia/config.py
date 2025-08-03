@@ -16,7 +16,7 @@ HUE_API_KEY = os.getenv("HUE_API_KEY", "")
 # relevant for inference
 LLM_API_URL = os.getenv("LLM_API_URL", "http://localhost:11434/v1")  # default to Ollama
 LLM_API_KEY = os.getenv("LLM_API_KEY", "")
-LLM_KEEP_ALIVE = os.getenv("KEEP_ALIVE", "24h")
+LLM_KEEP_ALIVE = os.getenv("LLM_KEEP_ALIVE", "24h")
 TOOL_MODEL = os.getenv("TOOL_MODEL", "hf.co/katanemo/Arch-Function-1.5B.gguf:Q4_K_M")
 TOOL_MODEL_TEMPERATURE = float(os.getenv("TOOL_MODEL_TEMPERATURE", 0.1))
 ANSWER_MODEL = os.getenv("ANSWER_MODEL", "gemma3:1b-it-qat")
