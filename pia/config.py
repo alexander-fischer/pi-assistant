@@ -4,7 +4,7 @@ import os
 load_dotenv()
 
 # relevant for prompts and tts
-LANGUAGE = os.getenv("LANGUAGE", "de")
+LANGUAGE = os.getenv("LANGUAGE", "en")
 
 # max words to use in wikipedia
 MAX_WIKIPEDIA_CONTENT_LENGTH = int(os.getenv("MAX_WIKIPEDIA_CONTENT_LENGTH", 16000))
