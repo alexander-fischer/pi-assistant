@@ -13,23 +13,24 @@ import os
 from kokoro_onnx import Kokoro
 from pia.config import DEVICE_SAMPLE_RATE
 
-kokoro = Kokoro(
-    "model/kokoro/kokoro-v1.0.int8.onnx",
-    "model/kokoro/voices-v1.0.bin",
-)
-# make kokoro use all compute cores
-num_threads = os.cpu_count() or 1
-logger.info(f"Num threads: {num_threads}")
-sess_opt = onnxruntime.SessionOptions()
-sess_opt.intra_op_num_threads = num_threads
-sess_opt.inter_op_num_threads = num_threads
-sess_opt.graph_optimization_level = onnxruntime.GraphOptimizationLevel.ORT_ENABLE_ALL
-kokoro.sess._sess_options = sess_opt
-
 
 class KokoroTts:
     def __init__(self) -> None:
-        self.kokoro = kokoro
+        self.kokoro = Kokoro(
+            "model/kokoro/kokoro-v1.0.int8.onnx",
+            "model/kokoro/voices-v1.0.bin",
+        )
+        # make kokoro use all compute cores
+        num_threads = os.cpu_count() or 1
+        logger.info(f"Num threads: {num_threads}")
+        sess_opt = onnxruntime.SessionOptions()
+        sess_opt.intra_op_num_threads = num_threads
+        sess_opt.inter_op_num_threads = num_threads
+        sess_opt.graph_optimization_level = (
+            onnxruntime.GraphOptimizationLevel.ORT_ENABLE_ALL
+        )
+        self.kokoro.sess._sess_options = sess_opt
+
         self._memory_cache: dict[str, np.ndarray] = {}
 
     def _text_hash(self, text: str) -> str:
