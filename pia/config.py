@@ -25,7 +25,7 @@ ANSWER_MODEL_TEMPERATURE = float(os.getenv("ANSWER_MODEL_TEMPERATURE", 1.0))
 # wakeword settings
 ASSISTANT_NAME = os.getenv("ASSISTANT_NAME", "Jarvis")
 WAKEWORD_MODEL = os.getenv("WAKEWORD_MODEL", "model/wakeword/hey_jarvis_v0.1.onnx")
-WAKEWORD_THRESHOLD = float(os.getenv("WAKEWORD_THRESHOLD", 0.1))
+WAKEWORD_THRESHOLD = float(os.getenv("WAKEWORD_THRESHOLD", 0.3))
 
 # speech to text settings
 PHRASE_TIME_LIMIT = float(os.getenv("PHRASE_TIME_LIMIT", 7.0))
