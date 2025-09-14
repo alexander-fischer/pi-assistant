@@ -1,7 +1,7 @@
 # pi-assistant
 
 **pi-assistant** is a tool-calling assistant designed for the Raspberry Pi. It can answer knowledge questions, provide weather updates, and control your smart home devices using small language models, wake word detection, automatic speech recognition (ASR), and text-to-speech (TTS).
-_Blog article coming soon!_
+Read more in my [blog article](https://alexfi.dev/blog/raspberry-pi-assistant).
 
 > **Note:** Currently, only tested on Raspberry Pi 5 (16GB RAM).
 
