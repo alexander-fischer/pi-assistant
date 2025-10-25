@@ -27,9 +27,9 @@ curl -L -o en_GB-alan-medium.onnx \
 curl -L -o en_GB-alan-medium.onnx.json \
   "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_GB/alan/medium/en_GB-alan-medium.onnx.json?download=true"
 curl -L -o de_DE-thorsten-high.onnx \
-  "https://huggingface.co/Thorsten-Voice/Piper/resolve/main/de_DE-thorsten-medium.onnx?download=true"
+  "https://huggingface.co/Thorsten-Voice/Piper/resolve/main/de_DE-thorsten-high.onnx?download=true"
 curl -L -o de_DE-thorsten-high.onnx.json \
-  "https://huggingface.co/Thorsten-Voice/Piper/resolve/main/de_DE-thorsten-high.onnx.json"
+  "https://huggingface.co/Thorsten-Voice/Piper/resolve/main/de_DE-thorsten-high.onnx.json?download=true"
 cd ..
 
 # wakeword
