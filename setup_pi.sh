@@ -16,7 +16,7 @@ poetry install
 # TODO: change to your model hosting if needed
 curl -fsSL https://ollama.com/install.sh | sh
 ollama pull hf.co/katanemo/Arch-Function-1.5B.gguf:Q4_K_M
-ollama pull gemma3:1b-it-qat
+ollama pull hf.co/LiquidAI/LFM2-8B-A1B-GGUF:Q4_K_M
 ./ollama_warmup.sh
 
 # piper
@@ -26,6 +26,10 @@ curl -L -o en_GB-alan-medium.onnx \
   "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_GB/alan/medium/en_GB-alan-medium.onnx?download=true"
 curl -L -o en_GB-alan-medium.onnx.json \
   "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_GB/alan/medium/en_GB-alan-medium.onnx.json?download=true"
+curl -L -o de_DE-thorsten-high.onnx \
+  "https://huggingface.co/Thorsten-Voice/Piper/resolve/main/de_DE-thorsten-medium.onnx?download=true"
+curl -L -o de_DE-thorsten-high.onnx.json \
+  "https://huggingface.co/Thorsten-Voice/Piper/resolve/main/de_DE-thorsten-high.onnx.json"
 cd ..
 
 # wakeword
