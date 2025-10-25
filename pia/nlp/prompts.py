@@ -1,34 +1,36 @@
 from pia.config import LANGUAGE
 
+SYSTEM_PROMPT: str = (
+    """
+Du bist ein Sprachassistent mit dem Namen {assistant_name}.
+""".strip()
+    if LANGUAGE == "de"
+    else """
+You are a language assistant named {assistant_name}.
+""".strip()
+)
+
 
 CREATE_ANSWER_PROMPT: str = (
     """
 Du bist ein Sprachassistent mit dem Namen {assistant_name}.
-Formuliere eine Antwort auf die Instruktion und der Antwort des Funktionsaufruf.
+Beantworte ausschließlich die Frage.
+Verwende nur Informationen aus dem Kontext, ansonsten antworte mit "Das weiß ich nicht".
 Die Antwort sollte informativ und kurz sein.
 
-Antwort Funktionsaufruf: {tool_response}
+Frage: {instruction}
 
-Instruktion: {instruction}
-
-Du bist ein Sprachassistent mit dem Namen {assistant_name}.
-Formuliere eine Antwort auf die Instruktion und der Antwort des Funktionsaufruf.
-Die Antwort sollte informativ und kurz sein.
+Kontext: {tool_response}
 """.strip()
     if LANGUAGE == "de"
     else """
-Your name is {assistant_name}.
-Formulate a response based on the instruction and the function call's response.
-The response should be informative and concise.
-Don't use formatting for the answer.
+You are a language assistant named {assistant_name}.
+Answer only the question.
+Use only information from the context, otherwise respond with “I don't know.”
+The answer should be informative and brief.
 
-Function Call Response: {tool_response}
+Question: {instruction}
 
-Instruction: {instruction}
-
-Your name is {assistant_name}.
-Formulate a response based on the instruction and the function call's response.
-The response should be informative and concise.
-Don't use formatting for the answer.
+Context: {tool_response}
 """.strip()
 )

@@ -8,6 +8,7 @@ from pia.config import (
     LLM_KEEP_ALIVE,
     TOOL_MODEL_TEMPERATURE,
 )
+from pia.nlp.prompts import SYSTEM_PROMPT
 from pia.nlp.tools.main import Tool
 
 client = openai.OpenAI(base_url=LLM_API_URL, api_key=LLM_API_KEY)
@@ -16,7 +17,10 @@ client = openai.OpenAI(base_url=LLM_API_URL, api_key=LLM_API_KEY)
 def stream_llm(instruction: str, model_id: str):
     return client.chat.completions.create(
         model=model_id,
-        messages=[{"role": "user", "content": instruction}],
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": instruction},
+        ],
         temperature=ANSWER_MODEL_TEMPERATURE,
         extra_body={"keep_alive": LLM_KEEP_ALIVE},
         stream=True,
@@ -26,8 +30,11 @@ def stream_llm(instruction: str, model_id: str):
 def call_llm(instruction: str, model_id: str):
     resp = client.chat.completions.create(
         model=model_id,
-        messages=[{"role": "user", "content": instruction}],
-        extra_body={"keep_alive": LLM_KEEP_ALIVE, "options": {"num_ctx": 32000}},
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": instruction},
+        ],
+        extra_body={"keep_alive": LLM_KEEP_ALIVE, "options": {"num_ctx": 8192}},
         temperature=ANSWER_MODEL_TEMPERATURE,
     )
     return resp.choices[0].message.content
