@@ -34,3 +34,17 @@ Question: {instruction}
 Context: {tool_response}
 """.strip()
 )
+
+SYSTEM_PROMPT_TOOL: str = (
+    """
+List of tools: <|tool_list_start|>[{tool_list_as_text}]<|tool_list_end|>
+
+Choose a tool from list of tools for the following query.
+Use search_wikipedia, if no tool from the list really fits.
+
+Follow the format from the example:
+
+Query: Whats the weather in Berlin?
+Answer: <|tool_call_start|>[get_current_weather(city="Berlin")]<|tool_call_end|>
+""".strip()
+)

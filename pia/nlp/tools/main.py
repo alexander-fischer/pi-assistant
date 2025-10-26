@@ -10,6 +10,7 @@ from pia.nlp.tools.weather.spec import (
 )
 from pia.nlp.tools.wikipedia.config import get_wikipedia_tools
 from pia.nlp.tools.wikipedia.spec import search_wikipedia
+import inspect
 
 
 available_functions: dict = {
@@ -34,7 +35,15 @@ class ToolSpecs:
             logger.info(f"Arguments: {tool_to_call.arguments}")
 
             try:
-                tool_response = function_to_call(**tool_to_call.arguments)
+                sig = inspect.signature(function_to_call)
+                valid_params = set(sig.parameters.keys())
+                filtered_args = {
+                    k: v
+                    for k, v in (tool_to_call.arguments or {}).items()
+                    if k in valid_params
+                }
+                tool_response = function_to_call(**filtered_args)
+
             except Exception as e:
                 message = str(e)
                 tool_response = ToolResponse(message=message, needs_rephrasing=True)
