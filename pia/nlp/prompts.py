@@ -15,7 +15,7 @@ CREATE_ANSWER_PROMPT: str = (
     """
 Du bist ein Sprachassistent mit dem Namen {assistant_name}.
 Beantworte ausschließlich die Frage.
-Verwende nur Informationen aus dem Kontext, ansonsten antworte mit "Das weiß ich nicht".
+Verwende nur Informationen aus dem Kontext für deine Antwort.
 Die Antwort sollte informativ und kurz sein.
 
 Frage: {instruction}
@@ -26,7 +26,7 @@ Kontext: {tool_response}
     else """
 You are a language assistant named {assistant_name}.
 Answer only the question.
-Use only information from the context, otherwise respond with “I don't know.”
+Use only information from the context for your answer.
 The answer should be informative and brief.
 
 Question: {instruction}

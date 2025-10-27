@@ -38,6 +38,7 @@ def call_llm(instruction: str, model_id: str):
         ],
         extra_body={"keep_alive": LLM_KEEP_ALIVE, "options": {"num_ctx": 8192}},
         temperature=ANSWER_MODEL_TEMPERATURE,
+        top_p=0.15,
     )
     return resp.choices[0].message.content
 
@@ -56,6 +57,8 @@ def call_llm_function(instruction: str, model_id: str, tools: list) -> Tool | No
             {"role": "user", "content": user_prompt},
         ],
         temperature=TOOL_MODEL_TEMPERATURE,
+        top_p=1.0,
+        seed=42,
         extra_body={"keep_alive": LLM_KEEP_ALIVE},
         stop="<|tool_call_end|>",
     )
